@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Nouvelle Liste</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form [formGroup]="newList" (ngSubmit)="onSubmitForm()" novalidate>
+        <ion-item>
+            <ion-label>Nom :</ion-label>
+            <ion-input type="text" formControlName="title" name="title"></ion-input>
+        </ion-item>
+
+        <ion-list>
+        <div formArrayName="items">
+            <ion-item *ngFor="let control of getItems().controls; let i = index">
+                <ion-input [formControlName]="i" placeholder="{{i+1}}."></ion-input>
+                <ion-icon (click)="onRemoveItem(i)" name="close-circle"></ion-icon>
+            </ion-item>
+        </div>
+        </ion-list>
+
+
+        <ion-button color="success" expand="block" fill="solid" (click)="onAddItem()">Ajouter</ion-button>
+
+    </form>
+
+</ion-content>
+
+
+<ion-footer>
+    <form [formGroup]="newList" (submit)="onSubmitForm()">
+        <ion-toolbar color="primary">
+            <ion-button expand="full" fill="clear" no-border color="light" type="submit" [disabled]="!newList.valid">
+                Sauvegarder
+            </ion-button>
+        </ion-toolbar>
+    </form>
+</ion-footer>

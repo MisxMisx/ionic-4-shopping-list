@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{listActive.title}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <div *ngFor="let item of itemsCheck" >
+                <ion-item button *ngIf="!item.checked" color="medium"  expand="full" fill="solid" (click)="onCheck(item.id)">{{item.name}}</ion-item>
+                <ion-item button *ngIf="item.checked" color="primary"  expand="full" fill="solid" (click)="onUncheck(item.id)">{{item.name}}</ion-item>
+        </div>
+    </ion-list>
+</ion-content>
