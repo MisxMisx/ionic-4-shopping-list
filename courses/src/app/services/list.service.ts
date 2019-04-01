@@ -104,6 +104,18 @@ export class ListService {
         toast.present();
     }
 
+    async presentSaveToast(title: string) {
+        const toast = await this.toastController.create({
+            message: title + ' a été sauvegardée',
+            duration: 2000,
+            position: 'top',
+            color: 'success',
+            showCloseButton: true,
+            closeButtonText: 'Ok'
+        });
+        toast.present();
+    }
+
     /////////////////////// storage ///////////////////
 
 

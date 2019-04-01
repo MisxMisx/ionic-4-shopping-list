@@ -63,7 +63,8 @@ export class UpdateListPage implements OnInit {
     }
 
     onRemoveItem(control) {
-        this.getItems().removeAt(control.key);
+        console.log(control.key);
+        this.getItems().removeAt(control);
     }
 
     async onDeleteList(id: string) {
@@ -101,6 +102,7 @@ export class UpdateListPage implements OnInit {
             items: formValue.items
         };
         this.listService.updateList(newValues);
+        this.listService.presentSaveToast(this.list.title);
     }
 
 }
